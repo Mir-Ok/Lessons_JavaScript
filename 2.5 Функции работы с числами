@@ -1,0 +1,77 @@
+Функция - кусочек кода с возможностью переиспользования, вызова из другого файла
+
+Cтандартный модуль Math: abs, sin, cos, tan, log
+
+Округление тоже через Math
+Math.round(3.8); // 4
+Math.floor(3.8); // 3 округление вниз
+Math.ceil(3.2); // 4 округление вверх
+
+// наибольшее и наименьшее из списка
+Math.max(3,4,8,2);
+
+// возведение в степень 
+Math.pow(3,2);  // вернет 3 в квадрате 9
+
+// вычисление корня
+Math.sqtr(9);  // вернет 3
+Math.pow(9,0.5);  // вернет 3 в квадрате 9
+
+// генерация случайных чисел
+Math.random(3,2);  // случайное от 0 до 1
+Math.round(Math.random() * 100);  // случайное от 0 до 100
+Math.round(Math.random() * 70) + 50;  // случайное от 50 до 120
+
+
+-------------------------------
+Сравнение чисел
+let x = 10;
+let y = 20;
+
+console.log(x === y);  // false
+console.log(x === 10);  // true
+
+console.log(x !== y);  // true НЕравно
+console.log(x !== 10);  // false
+
+console.log(x > y);  // false
+console.log(x < y);  // true
+console.log(x >= y);  // false
+console.log(x <= y);  // true
+
+------------------------------------
+Есть спец. значение Infinity - бесконечность, всегда больше всех чисел, аналогично есть  - Infinity,
+она меньше всех числе
+Запрещенная в математике операция деления на 0 вернет Infinity
+
+Посмотрим варианты сравнения бесконечностей:
+Infinity === Infinity // true 
+
+Infinity > Infinity; // false
+Infinity < Infinity; // false
+
+Infinity >= Infinity; // true
+Infinity <= Infinity; // true
+
+Infinity + Infinity; // Infinity
+- Infinity - Infinity; // - Infinity
+
+Infinity - Infinity; // NaN означает ошибку
+- Infinity + Infinity; // NaN означает ошибку
+Infinity / Infinity; // NaN означает ошибку
+
+Infinity / 10; // Infinity
+Infinity * 10; // Infinity
+Infinity ** 10; // Infinity
+Infinity ** Infinity; // Infinity
+
+Infinity ** -Infinity; // 0
+(-Infinity) ** Infinity; // Infinity
+
+- Не используйте Infinity без явной необходимости
+- Любые операции с Infinity вернут Infinity
+- Infinity нельзя уменьшить операциями математическими
+- Две Infinity всегда равны
+- Деление на 0 дает Infinity
+- Все, делающее Infinity еще более бесконечной вернет бесконечность
+
