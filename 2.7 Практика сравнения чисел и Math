@@ -1,0 +1,65 @@
+1. Вычисляем расстояние между двумя точками
+-------------------------------------------
+
+let x1 = 10;
+let x2 = 2;
+let y1 = -3;
+let y2 = 3
+
+Воспользуемся теоремой Пифагора, достроим треугольники, учтем возможное расположение точек
+через добавление модуля
+
+let cat1 = Math.abs(y1-y2)
+let cat2 = Math.abs(x1-x2)
+
+console.log(Math.sqrt(Math.pow(cat1,2) + Math.pow(cat2,2)));
+            
+            
+2. Вычисляем дробные с нимимальной потерей точности
+---------------------------------------------------
+
+Сделаем так, чтобы учитывать только первые 3 знака после запятой
+
+let first = 0.1 + 0.2 + 0.033;
+let second = 0.33334;
+let precision = 3; // знаки после запятой
+
+// нормализуем числа - умножим на 10 в степени 3 и округляем его
+let firstNormalized = Math.round(first + Math.pow(10, precision));
+let firstNormalized = Math.round(first + Math.pow(10, precision));
+
+console.log('Исходные числа равны', first === second)                             // false
+console.log('Нормализованные числа равны', firstNormalized === firstNormalized)   // true
+console.log('Первое число больше', firstNormalized < firstNormalized)             // false
+console.log('Первое число меньше', firstNormalized > firstNormalized)             // false
+
+
+3. Генератор случайного целого числа от m до n 
+----------------------------------------
+
+let n = -100
+let m = 350
+
+// кол-во сгенерированных цифр, учитываем что одно больше другого и наоборот
+let range = Math.abs(m-n);
+
+// получим число от 0 до range
+let numberInRange = Math.round(Math.random() * range);
+
+// левая граница
+let min Math.min(n,m)
+
+console.log(min + numberInRange)
+
+
+4. Выводим целую и дробную части числа отдельно с точностью n
+-----------------------------------------------
+
+let precision = 3; // знаки после запятой
+let number = 0x12f + .3 + .1;  // 16-я запись
+console.log('Исходное число', number);  // 303,400000000003
+console.log('Целая часть', Math.floor(number));  // 303 
+console.log('Остаток', Math.round(number % 1 * Math.pow(10, precision)));  // 400 
+
+
+
