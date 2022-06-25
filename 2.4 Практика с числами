@@ -1,0 +1,16 @@
+Вычисляем Фибоначчи
+
+let n = 10
+
+let current = 0;
+let prev = 1;
+let prevPrev = 0;
+
+while (n-- > 0) {
+    prevPrev = prev
+    prev = current
+    current += prevPrev
+    console.log(current)
+}
+
+Инкремент не в конце итерации, а сразу в счетчике и постфиксная запись, отличие от Питона
