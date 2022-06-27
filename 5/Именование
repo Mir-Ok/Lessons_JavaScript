@@ -1,1 +1,10 @@
+Naming Conventions
 
+// camelCase
+// первая строчная буква
+// PascalCase
+// kebab-case  - в коде нельзя, так как - зарезервирован
+// snake_case
+
+
+В одном проекте один тип названий
