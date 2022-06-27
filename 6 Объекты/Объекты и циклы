@@ -1,0 +1,66 @@
+let computer = {
+  chipset: "AMD X570",
+  coreCount: 8,
+  cpuManufactored: "AMD",
+  price: 100000,
+  ramFrequency: 3200,
+  ramType: "DDR4",
+  ramVolume: 8192,
+  socket: "AM4",
+  usbPortCount: 8,
+  videocardModel: "Nvidia GeForse GTX 1060",
+  videomemory: 4096,
+};
+
+let keys = Object.keys(computer);     // ключи, все массивы
+let values = Object.values(computer);   // значения
+let entries = Object.entries(computer);  // оба сразу
+
+
+// Выведем все при помощи цикла:
+
+console.log('VALUES\n');
+for (let value of values) {
+  console.log(value)
+}
+
+console.log('KEYS\n');
+for (let key of keys) {
+  console.log(`${key} ${computer[key]}`)
+}
+
+console.log('ENTRIES\n');
+for (let entry of entries) {
+  console.log(`${entry[0]} : ${entry[1]}`)
+}
+// читабельный вариант
+console.log('K_V\n');
+for (let [key, value] of entries) {  // деструктуризация 
+  console.log(`${key} : ${value}`)
+}
+
+
+ВАЖНО! 
+Устаревший вариант, когда еще не было for of
+
+for (let key in computer) {
+  if (!computer.hasOwnProperty(key)) {
+    continue;
+  }
+  console.log(computer[key]);
+}
+
+
+Особенно массивов
+-----------------
+
+Массив может вести себя как объект
+
+let digits = [1,2,3,4,5];
+
+console.log(Object.values(digits));   // [ 1, 2, 3, 4, 5 ]
+console.log(Object.keys(digits));     // [ '0', '1', '2', '3', '4' ]
+console.log(Object.entries(digits));  // [['0', 1], ['1', 2], ['2', 3], ['3', 4], ['4', 5]]
+
+Обратите внимание, что ключ - это строка!
+
