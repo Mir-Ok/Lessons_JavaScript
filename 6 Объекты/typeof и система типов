@@ -49,3 +49,6 @@ typeof newLetVariable; let newLetVariable; // ReferenceError
 typeof newConstVariable; const newConstVariable = 'hello'; // ReferenceError
 
 Подробнее https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/typeof
+
+Про символы отдельно https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+Про bigint отдельно https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/BigInt
