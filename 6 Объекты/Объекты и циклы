@@ -1,3 +1,5 @@
+Подробнее https://learn.javascript.ru/object
+
 let computer = {
   chipset: "AMD X570",
   coreCount: 8,
