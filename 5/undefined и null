@@ -1,0 +1,31 @@
+let socket = null; //  розетка, к которой ничего не подключено
+
+socket = 'Чайник'; // подключаем чайник к розетке
+socket = null      // отключаем чайник от розетки
+
+null - явное отсутствие чего-то: нет решения, ничего не подключено, в душе пустота ...
+undefined - неявное отсутствие, это никто не задавал
+            не определено, нет розетки и невозможно ничего определить
+            
+undefined возвращают функции без return или с пустым return, переменные без значений,
+   10 элемент списка из 5 значений ...
+   Общая идея - пустота по умолчанию, когда нам неважно, пустой или нет
+   
+let emptyVar;
+console.log(emptyVar)  // undefined
+
+let array = [1,2,3]
+console.log(array[1])  // 2
+console.log(array[10])  // undefined
+console.log(array[-1])  // undefined
+
+Сравнение с undefined
+---------------------
+
+console.log(array[-1] === undefined); // true
+console.log(array[0] === undefined); // false
+
+function emptyfunction() {}
+console.log(emptyfunction());  // undefined
+
+Важно! при объявлении переменной если мы не знаем, что там потом будет, лучше записать null 
