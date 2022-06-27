@@ -1,0 +1,43 @@
+Объекты - например, человек, у которого есть несколько характеристик. 
+Позволяет объединить множество значений в одном
+
+lem object = {
+  свойство (любая строка, если пробелы и пр - в '') : значение (разные типы)
+}
+
+let me = {
+  name : 'Oksa',   
+  surname : null,
+  birthday : {year : 1987, month : 07, day : 09},
+  occupation : 'Разработчик',
+  married : false,
+  'property with spaces' : null,  // для примера, так не надо делать, но можно
+};
+
+// добавим новое свойство после создания
+me.education = 'НИУ ВШЭ';
+
+// изменим имеющееся
+me.occupation = 'безработный';
+
+// изменим свойство с пробелами, похоже на работу с массивами
+me['property with spaces'] = 42;
+
+// удаление свойства
+delete me.education; 
+delete me['property with spaces']
+
+// получение значения свойства
+let myName = me.name;
+let myBirthYear = me.birthday.year
+
+
+Напишем функцию для вывода свойств
+----------------------------------
+
+function printObjProperty(obj, propName) {
+  console.log(obj[propName]);
+}
+
+printObjProperty(me, 'name');
+printObjProperty(me, 'occupation');
