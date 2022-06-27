@@ -1,0 +1,108 @@
+Добавим объектам новое поведение. Научимся:
+
+1. объединять объекты
+2. получать свойства объекта в виде массива
+3. ссылка на объект и их сравнение
+
+
+Объединение нескольких в сводный
+--------------------------------
+Переносим свойства объекта в единственный новый. На примере сборки компа
+Например, при создании пользователя на сайте, агрегируем свойства
+
+let motherboard = {
+  usbPortCount: 8,
+  chipset: 'AMD X570',
+  socket: 'AM3/AM4',
+}
+
+let cpu = {
+  coreCount: 8,
+  cpuManufactored: 'AMD',
+  socket: 'AM4',
+}
+
+let videocard = {
+  videocardModel: 'Nvidia GeForse GTX 1060',
+  cpuManufactored: 'AMD',
+  videomemory: 4096,
+}
+
+let ram = {
+  ramType: 'DDR4',
+  ramVolume: 8192,
+  ramFrequency: 3200,
+}
+
+Собираем все вместе, оператор spread ...
+Можем смешивать как литеральную запись, там и спреды
+
+let computer = {
+price: 100000,
+...motherboard,
+// свойство socket из motherboard будет заменено на cpu (возьмет то, что упомянуто последним)
+...cpu,
+...videocard,
+...ram
+}
+
+Есть способ смешать при помощи функции, первый указанный вберет в себя все последующие
+
+let computerWithAssign = Object.assign(
+  // целевой объект
+  {
+    price: 100000
+  },
+  // добавляемые
+  motherboard, cpu, videocard, ram
+  );
+  
+// Убедимся в идентичности содержимого обоих способов формирования:
+console.log(computer);
+console.log(computerWithAssign);
+
+ВАЖНО!
+Чтобы избежать смешивания там, где не надо и перезаписи свойств:
+1. let computerWithAssign = Object.assign({}, motherboard)
+2. let computerWithAssign = Object.assign(...motherboard)
+Это создаст два новых объекта, и не тронет исходные
+
+Получение списка свойств и значений свойств объекта
+---------------------------------------------------
+console.log(Object.keys(computer));     // ключи
+console.log(Object.values(computer));   // значения
+console.log(Object.entries(computer));  // оба сразу
+
+
+Передача объекта по ссылке
+--------------------------
+Когда мы ссылаемся одной переменной на другу, мы берем копию значения.
+Поэтому изменение второй никак не отразится на первой
+
+let oneDigit = 20;
+let twoDigit = oneDigit;
+
+twoDigit +=5;  // изменится только вторая, свойственно всем простым типам данных
+                  (число, строка, булевы)
+                  
+let obj = {model: 'Polo'};
+let otherObj = obj
+
+otherObj.model = 'VW' // изменятся оба, так как это ссылочный тип данных
+                         потому что копируется не объект, а ссылка на него
+
+console.log(oneDigit);   // 20
+console.log(twoDigit);   // 25
+console.log(obj);        // 'VW'
+console.log(otherObj);   // 'VW'
+
+
+Сравнение объектов
+--------------------------
+
+let obj = {model: 'Polo'};
+let obj1 = obj
+console.log(obj === obj1); // true, так как один объект
+
+let obj2 = {model: 'Polo'}; 
+console.log(obj === obj2);  // false, так как два объекта
