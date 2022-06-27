@@ -1,4 +1,5 @@
-Два способа созания
+Два способа создания
+---------------------
 
 1. Объявление с использованием function
 
@@ -22,3 +23,82 @@ functionVariable();
 
 то первая отработает, а вторая выдаст ошибку о вызове before assingment 
   
+  
+Аргументы функции
+------------------
+Это параметры, с кторыми работает функция
+
+function great(who) {
+  console.log(`Привет, ${who}`)
+}
+great('Петя');
+
+Можно назначиьть значение по умолчанию
+
+function great(who = 'Незнакомец') {
+  console.log(`Привет, ${who}`)
+}
+great();
+
+
+Аргументов может быть несколько, можно подать массив, конкретное значение или переменую
+
+function findCard(cards, wantedCard = 'Туз') {
+  console.log('Ищем карту ' + wantedCard);
+  
+  let found = false;
+  
+  for (let card of cards) {  // for of потому что ищем значение элемента
+    console.log('Вытянули ' + card);  
+    if (card === wantedCard) {
+      found = true;
+      break;
+    }
+  }
+  
+  console.log(found ? 
+      `Мы нашли карту ${wantedCard}` : 
+      `Нет в колоде карты ${wantedCard}`);
+}
+
+let myCards = ['2', 'Король', 'Туз', '5', '6', 'Король'];
+
+findCard(myCards)  // вызываем с одним аргументом и умолчанием
+findCard(myCards, '5')  // вызываем с обоими аргументами
+
+
+Возвращаемое значение и undefined
+---------------------------------
+Перепишем функцию выше так, чтобы она возвращала не значение элемента, а индекс
+
+function findCardIndex(cards, wantedCard = 'Туз') {
+  console.log('Ищем карту ' + wantedCard);
+  
+  let foundIndex = -1;  // так обозначим несуществующую карту
+  
+  for (let index in cards) {  // for in потому что ищем индекс элемента
+    let card = cards[index];
+    console.log('Вытянули ' + card);  
+    if (card === wantedCard) {
+      foundIndex = index;
+      break;
+    }
+  }
+  
+  console.log(foundIndex > -1 ? 
+      `Мы нашли карту ${wantedCard}` : 
+      `Нет в колоде карты ${wantedCard}`);
+      
+  return foundIndex;    
+}
+
+let myCards = ['2', 'Король', 'Туз', '5', '6', 'Король'];
+
+let iceIndex  = findCardIndex(myCards)  // вызываем с одним аргументом и умолчанием
+console.log(iceIndex);
+let jackIndex = findCardIndex(myCards, '5')  // вызываем с обоими аргументами
+console.log(jackIndex);
+let lowIndex = findCardIndex(myCards, 'Валет')  // вызываем с обоими аргументами
+console.log(lowIndex);
+
+return может стоять в нескольких ветках одной функции
