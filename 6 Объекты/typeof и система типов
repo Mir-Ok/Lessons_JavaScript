@@ -1,0 +1,51 @@
+Система типов JS:
+
+1. простые - boolean, number, string, symbol, bigint 
+   (их значения копируются при присваивании, передаются по значению)
+2. нулевые - null, undefined (имеют только одно значение)
+3. object - array, function 
+   (ссылочный тип, значения не копируются при присваивании)
+   могут объединять в себе другие типы и даже объекты
+   они не выделяются в отдельный тип, это частный тип object 
+   
+   
+Оператор typeof вернет название типа в виде строки
+- console.log(typeof 42);        // expected output: "number"
+- console.log(typeof 'blubber'); // expected output: "string"
+- console.log(typeof true);      // expected output: "boolean"
+- console.log(typeof Function ); // expected output: "Function " - специальное
+- console.log(typeof null );     // expected output: "Object " - просто запомнить
+
+Не проверяем при помощи него значения на пустоту, ТОЛЬКО оператор сравнения
+
+
+Использование оператора new
+---------------------------
+
+// Все функции-конструкторы, созданные с помощью 'new', будут иметь тип 'object'
+var str = new String('String');
+var num = new Number(100);
+
+typeof str; // Вернёт 'object'
+typeof num; // Вернёт 'object'
+
+
+Ошибки, связанные с временными мёртвыми зонами
+----------------------------------------------
+
+До ECMAScript 2015, гарантировалось, что оператор typeof вернёт строку для любого операнда, 
+с которым он был вызван. Это изменилось после добавления не поднимающихся объявлений 
+let and const с блочной областью  видимости. 
+Теперь, если переменные объявлены с помощью let и const, и для них вызывается typeof в 
+блоке объявления переменных, но до объявления, то выбрасывается ReferenceError. 
+
+Поведение отличается от необъявленных переменных, для которых typeof вернёт 'undefined'. 
+Переменные с блочной областью видимости находятся в "временной мёртвой зоне", 
+которая длится от начала блока до момента объявления переменных. 
+В этой зоне попытка доступа к переменным выбрасывает исключение.
+
+typeof undeclaredVariable === 'undefined';
+typeof newLetVariable; let newLetVariable; // ReferenceError
+typeof newConstVariable; const newConstVariable = 'hello'; // ReferenceError
+
+Подробнее https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/typeof
