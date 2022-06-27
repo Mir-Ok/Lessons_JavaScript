@@ -1,0 +1,68 @@
+Методы здесь - это функции, которые хранятся в свойствах объекта, 
+могут вычислять что-то и даже изменять сам объект
+
+Например, мой возраст меняется со временем, и писать его константой неверно
+
+let me = {
+  birthDate : {year : 1987, month : 07, day : 09},
+  age : 34,
+  // другие свойства
+}
+
+Пропишем getAge
+
+let me = {
+    birthDate: { year: 1987, month: 7, day: 9 },
+    getAge: function() {
+      let now = new Date();
+      let born = new Date(
+        this.birthDate.year,
+        this.birthDate.month + 1,
+        this.birthDate.day,
+        );
+      let diffInMilliseconds = now.getTime() - born.getTime();
+      console.log(diffInMilliseconds);
+      return Math.floor(diffInMilliseconds / 1000 / 60 / 60 / 24 / 365.25);
+    }  
+    // другие свойства
+}
+
+console.log(me.getAge());
+
+ВАЖНО! Ключевое слово this - дает доступ методу объекта к переменным объекта, типа
+переменной, в которой живет этот объект.
+Он всегда принимает значение того объекта, который слева от точки
+Если меод через this вызовет несуществующие свойства, то вернется undefined 
+
+
+-------------------------------
+Краткий вариант записи
+
+С текущего момента функции внутри объекта мы будем называть методами, и их определять более коротко
+вместо getAge: function() достаточно getAge(), они аналогичны
+
+Пример краткой записи, сначала создаем отдельно, потом собираем вместе.
+Это позволяет один метод помещать в разные объекты
+
+let name = '';
+let surname = '';
+function getFullName() {
+  return this.name + '' + this.surname;
+}
+
+// собираем объект
+let obj = { name, surname, getFullName}
+
+// вызываем свойство, в кото. функция, он же метод
+console.log(obj.getFullName());
+
+// дополним еще одним методом наш объект
+obj.whoAmI = function() {
+  console.log(`Меня зовут ${this.name} ${this.surname}`);
+}
+
+// вызовем его
+obj.whoAmI(); 
+
+// удалим свойство
+delete obj.getFullName; 
