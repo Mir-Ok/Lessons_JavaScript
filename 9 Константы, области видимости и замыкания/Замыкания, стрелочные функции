@@ -67,3 +67,39 @@ const arrowFn = (name, surname) => { name, surname };
 
 const arrowFn = (name, surname) => ({ name, surname });
 arrowFn('Иван','Иванов')  // {name: 'Иван', surname: 'Иванов'}
+
+------------------------------------------------------------------
+Обработка событий стрелочными функциями
+
+const me = {
+  name: 'Oksa',
+  surname: 'Mir',
+  // Функция-метод объекта, имеет fhis
+  getFullName() {
+      return `${this.name} ${this.surname}`;
+  },
+  // Аналогичная функция, но стрелочная
+  getFullNameArr: () => `${this.name} ${this.surname}`,
+};
+
+console.log(me.getFullName());  // Oksa Mir
+// console.log(me.getFullNameArr());  // undefined
+
+Чтобы заработало, нужно в глобальной ОВ создать переменные и убрать this 
+
+const me = {
+  name: 'Oksa',
+  surname: 'Mir',
+  // Функция-метод объекта, имеет fhis
+  getFullName() {
+      return `${this.name} ${this.surname}`;
+  },
+  // Аналогичная функция, но стрелочная
+  getFullNameArr: () => `${name} ${surname}`,
+};
+
+console.log(me.getFullName());  // Oksa Mir
+
+let name = 'Oksa';
+let surname = 'Mir';
+console.log(me.getFullNameArr());  // Oksa Mir
