@@ -106,3 +106,6 @@ console.log(me.getFullName());  // Oksa Mir
 let name = 'Oksa';
 let surname = 'Mir';
 console.log(me.getFullNameArr());  // Oksa Mir
+
+
+-------------------------------------------
