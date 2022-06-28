@@ -109,3 +109,31 @@ console.log(me.getFullNameArr());  // Oksa Mir
 
 
 -------------------------------------------
+Когда какую использовать?
+
+===== Обычная
+
+1. Методы объектов
+
+const obj = {
+  name: 'Name',
+  printName() {
+    console.log(this.name);
+    }   
+};
+
+2. Обработчики событий когда нужен именно this, нечастно
+
+input.addEventListener('input', function() {
+  console.log(this.value);
+});
+
+3. Простые именованные функции в скрипте, это наглядно
+
+function newFunc() {
+  // тело функции
+}
+
+===== Стрелочная
+
+1. Обработчик событий
