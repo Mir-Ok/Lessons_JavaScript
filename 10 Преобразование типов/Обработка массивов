@@ -1,1 +1,49 @@
+Преобразование массивов 
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+const numbers = [0,1,2,3,4,5,6,7,8,9];
+
+// вынет первый элемент и вернет его
+const first = numbers.shift()
+console.log(first)    // 0
+console.log(numbers)  // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+
+// удалит последний с конца
+const last = numbers.pop()
+console.log(first)
+console.log(last)
+
+//удобно использовать в цикле while, true пока не пустой 
+while (numbers.length) {
+    // на каждоый итерации массив худеет
+    console.log(`Удаляем ${numbers.pop()}`)
+}
+
+// вынуть из середины, с какого и сколько, исходный не изменится
+// если взять слишком большйо первый аргумент - ничего не будет
+// правый аргумент можно опустить
+const middle = numbers.splice(4,2);
+console.log(middle)  // [ 4,5 ]
+
+// разрезать по индексу, убрать справа ничего и добавить
+const middleAdd = numbers.splice(4,0,4,2);
+console.log(middleAdd)  //  
+
+// разрезать по индексу, правую чать получить в переменную
+const part = numbers.splice(4);
+console.log(part)  //  
+
+// поворот массива задом наперед
+numbers.reverse()
+
+// сортировка
+numbers.sort()
+numbers.sort((a,b) => a - b); // если больше десяти
+numbers.sort((a,b) => b - a);
+
+// срезы, возможности начиная от копии и до всяких фигурных вырезов
+numbers.slice()
+
+// плюс все методы строк
+
 
