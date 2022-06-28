@@ -43,3 +43,17 @@ const arrowFn = () => {
 console.log('Иван');
 }
 arrowFn()  // Иван 
+
+--------------------
+Если опустить фигурные скобки, то функция вернет результат, словно это return
+
+const arrowFn = (name, surname) => `Привет, ${name} ${surname}`;
+arrowFn('Иван','Иванов')  // 'Привет, Иван Иванов'
+
+Это равнозначно записи ниже
+
+const arrowFn = (name, surname) => {
+  return `Привет, ${name} ${surname}`;
+};
+arrowFn('Иван','Иванов')
+
