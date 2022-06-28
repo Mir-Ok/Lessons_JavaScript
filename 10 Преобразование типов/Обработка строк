@@ -31,3 +31,6 @@ str.trim();
 str.indexOf('ка')
 
 str.lastIndexOf('ка')  // с конца
+
+parseInt - https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+parseFloat - https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
