@@ -57,3 +57,13 @@ const arrowFn = (name, surname) => {
 };
 arrowFn('Иван','Иванов')
 
+---------------------
+
+Стрелочная функция может иметь одну инструкцию и мы хотим, чтобы она вернула объект
+
+const arrowFn = (name, surname) => { name, surname };
+
+Чтобы показать, что это не тело функции, а объект, добавим ()
+
+const arrowFn = (name, surname) => ({ name, surname });
+arrowFn('Иван','Иванов')  // {name: 'Иван', surname: 'Иванов'}
