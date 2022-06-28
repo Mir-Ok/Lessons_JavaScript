@@ -137,3 +137,16 @@ function newFunc() {
 ===== Стрелочная
 
 1. Обработчик событий
+
+input.addEventListener('input', () {
+  console.log('input event');
+});
+
+2. При передаче анонимной функции в качестве параметра в другую функцию
+
+setInterval( () => {
+  console.log('tick');
+}, 1000)
+
+3. Вызов сразу после объявления IIFE
+(() => {})() // аналогично (function() {})()
