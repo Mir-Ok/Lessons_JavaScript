@@ -121,7 +121,110 @@ https://getbootstrap.com/docs/4.5/getting-started/introduction/#css
 
     });
     
-Добавим приложению поведение (следующий урок 8.3)
+Добавим приложению поведение (следующий урок 8.3), добавим удаление и зачеркивание.
 
+Создадим функцию DOM-элемента с делом (название, кнопку завершения и удаления дела).
+Название дела задается пользователем в форме, его мы укажем как аргумент функции, 
+чтобы связать отправку формы и создание элемента
+
+function createTodoItem(name) {
+        
+        // создаем кнопки и наполняем
+        let item = document.createElement('li');
+        item.textContent = name;
+
+        let doneButtton = document.createElement('button');
+        doneButtton.textContent = 'Готово';
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Удалить';
+        
+        // создаем контейнер для единого офрмления
+        let buttonGroup = document.createElement('div');
+
+        // устанавливаем стили
+        item.classList.add('list-group-item', 'd-flex', 'justify-content-between','align-items-center');
+        doneButtton.classList.add('btn','btn-success');
+        deleteButton.classList.add('btn','btn-danger')
+        buttonGroup.classList.add('btn-group','btn-group-sm');
+        
+        // кнопки собираем в элемент с единым стилем          
+        buttonGroup.append(doneButtton);
+        buttonGroup.append(deleteButton);
+        item.append(buttonGroup);
+
+        // приложению нужен доступ к самому элементу и кнопкам
+        // для обработки события нажатия
+        return {
+            item,
+            doneButtton,
+            deleteButton,
+        };
+
+    } 
+    
+    Дополним 
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // создаем контейнер
+        let container = document.getElementById('todo-app');
+        
+        // создаем переменные при помощи функций
+        let todoAppTitle = createAppTitle('Список дел');
+        let todoItemForm = createTodoItemForm();
+        let todoList = createTodoList();
+
+        let todoItems = [createTodoItem('Сходить за хлебом'), 
+                         createTodoItem('Купить молоко'),]
+        
+        // размещаем переменные в контейнере
+        container.append(todoAppTitle);
+        container.append(todoItemForm.form);
+        container.append(todoList);
+
+        todoList.append(todoItems[0].item);
+        todoList.append(todoItems[1].item);
+
+    });   
+
+Научим обрабатывать событие создания
+
+// браузер создает событие submit на форме по нажатию Enter 
+        todoItemForm.form.addEventListener('submit', function(e){
+            // предотвратим обновление страницы при отправке формы
+            e.preventDefault();
+
+            // не создаем элемент, если поле для ввода пустое
+            if (!todoItemForm.input.value) {
+                return;
+            }
+
+            // создаем и добавляем новое дело с названием поля для ввода
+            todoList.append(createTodoItem(todoItemForm.input.value).item);
+
+            // обнуляем значение в поле, чтобы не удалять вручную
+            todoItemForm.input.value = '';
+        });
+        
+// добавим код с обработчиками событий
+let todoItem = createTodoItem(todoItemForm.input.value);
+
+// добавляем обработчики на кнопки
+todoItem.doneButtton.addEventListener('click', function() {
+    todoItem.item.classList.toggle('list-group-item-success');
+});
+todoItem.deleteButton.addEventListener('click', function() {
+    if (confirm('Вы уверены?')) {
+        todoItem.item.remove();
+    }
+});
+
+// добавление в список
+todoList.append(todoItem.item);       
 
     
+Готово. Сделаем разделение кода
+
+Внесем улучшение, пусть на одной странице будет несколько списков
+Создание контейнера вынесем в функцию, и будем ее вызывать нужное количество раз
+Индексная страница будет содержать три  контейнера
