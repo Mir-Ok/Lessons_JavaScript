@@ -159,3 +159,18 @@
     // поместим в глобальную область видимости
     window.createTodoApp = createTodoApp;
 })();
+
+
+const me = {
+    name: 'Oksa',
+    surname: 'Mir',
+    // Функция-метод объекта, имеет fhis
+    getFullName() {
+        return `${this.name} ${this.surname}`;
+    },
+    // Аналогичная функция, но стрелочная
+    getFullNameArr: () => `${this.name} ${this.surname}`,
+};
+
+console.log(me.getFullName());
+console.log(me.getFullNameArr());
