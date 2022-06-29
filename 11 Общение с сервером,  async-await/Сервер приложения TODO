@@ -1,0 +1,38 @@
+Скачиваем в папку файлы, открываем баш-строку из папки с сервером, 
+команда node index.js - в ответ получаем успешно запещунный сервер
+
+Сервер TODO запущен. Вы можете использовать его по адресу http://localhost:3000
+Нажмите CTRL+C, чтобы остановить сервер (либо закрытие терминала)
+Доступные методы:
+GET /api/todos - получить список дел, query параметр owner фильтрует по владельцу
+POST /api/todos - создать дело, в теле запроса нужно передать объект { name: string, owner: string, done?: boolean }
+GET /api/todos/{id} - получить дело по его ID
+PATCH /api/todos/{id} - изменить дело с ID, в теле запроса нужно передать объект { name?: string, owner?: string, done?: boo
+lean }
+DELETE /api/todos/{id} - удалить дело по ID
+
+Одновременно в папке появился файл db.json
+
+Локалхост https://ru.wikipedia.org/wiki/Localhost
+Порты https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D1%82_(%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D1%8B%D0%B5_%D1%81%D0%B5%D1%82%D0%B8)
+
+Это доменное имя компа, когда программа запущена на нем самом
+
+API - программный интерфейс приложения, методы работы с сервером
+
+-------------------
+Создадим файл index.html и внесем в него первую функцию обращения к серверу
+
+ async function loadTodoItems() {
+        const response = await fetch('http://localhost:300/api/todos');
+        const data = await response.json();
+        console.log(data);
+    }
+    
+Запуск в браузере вернет пустую страницу, ибо список пуст   
+Не сработало, запрет CORS https://javascript.info/fetch-crossorigin
+
+Решилось через добавление Решилось через добавление mode: "no-cors"
+const response = await fetch('http://localhost:3000/api/todos', {mode: "no-cors"});
+
+Добавим функцию создания дела и другие, не забываем вызывать функции
