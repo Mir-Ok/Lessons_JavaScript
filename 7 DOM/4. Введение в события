@@ -12,7 +12,7 @@
 1. Создадим элемент для отслеживания
 
   <div class='container pt-4'>
-    <button class='btn btn-primary>Кнопка</button>
+    <button class="btn btn-primary">Кнопка</button>
   </div>
 
 2. Создадим функцию, которая выполнится при нажатии на кнопку
@@ -32,3 +32,54 @@
 ------------------
 Создаем html и js страницы 
   
+В html создаем верстку и кнопку в боди, в head создаем ссылку на скрипт
+
+  <div class='container'>
+    <p class="count-display">1</p>
+    <button class="btn btn-primary">Кнопка</button>
+  </div>
+  
+В js создаем скрипт:
+
+let countDisplay = document.querySelector('.count-display');  // текущее число
+let incrementButton = document.querySelector('.increment-display'); // кнопка увеличения
+
+function incrementCount() {   // обработчик - функция увеличения
+  let currentCount = parseInt(countDisplay.textContent);
+  countDisplay.textContent = currentCount + 1;
+}
+
+// вешаем обработчик события incrementCount на щелчок кнопки click
+incrementButton.addEventListener('click', incrementCount)
+
+ВАЖНО! 
+Браузер разбирает html сверху вниз, поэтому если скрипт находится в head, 
+то он сначала отрабатывает, а уже потом появляется кнопка и описание действий.
+Чтобы заработало:
+1. Перенести скрипт в самый низ документа, в конец боди перед закрытием
+2. Поместить весь код, работающий с DOM в обработчик специального события DOMContentLoaded,
+   который создается браузером сразу после того, как он закончит разбирать html
+   
+   добавляем внизу строку
+   document.addEventListener('DOMContentLoaded', function() {})
+   
+   и помещаем в нее весь наш код
+   
+   document.addEventListener('DOMContentLoaded', function() {
+   
+      let countDisplay = document.querySelector('.count-display');  // текущее число
+      let incrementButton = document.querySelector('.increment-display'); // кнопка увеличения
+      
+      function incrementCount() {   // обработчик - функция увеличения
+        let currentCount = parseInt(countDisplay.textContent);
+        countDisplay.textContent = currentCount + 1;
+      }
+      
+      incrementButton.addEventListener('click', incrementCount)
+   });
+3. Самый современный и надежный способ - добавить defer (отложить) в скрипт.
+   То есть бразео дойдет до скрипта, начнет скачивать его на фоне и продолжить разбирать html
+   И выполнит код только после того, как дойдет до конца.
+   Сначала выполнится код, а после сгенерится событие DOMContentLoaded
+   
+ Принято комбинировать 1 и 3, или 2 и 3 (лучше, но со старыми не работает)
