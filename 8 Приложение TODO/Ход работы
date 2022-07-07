@@ -1,3 +1,10 @@
+Прочесть!
+
+1. JSON.stringify() - https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+2. JSON.parse() - https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+3. Window.localStorage - https://developer.mozilla.org/ru/docs/Web/API/Window/localStorage
+
+
 Создаем папку проекта TODO и внутри нее два файла index.html и main.js
 
 https://itchief.ru/html-and-css/viewport-meta-tag
