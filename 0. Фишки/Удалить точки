@@ -1,0 +1,29 @@
+// решение 1
+
+let str = 'T.y.p.e.s.r.i.p.t'
+let newStr = ''
+
+for (i=0; i < str.length; i ++) {
+
+    // let elem = str.slice(i, i+1)
+    let elem = str[i]
+    if (elem != '.') {
+        newStr += elem
+    }
+}
+
+console.log(newStr)
+
+// решение 2
+
+let str2 = 'T.y.p.e.s.r.i.p.t'
+let newStr2 = str2.replaceAll(".","")
+console.log(newStr2)
+
+
+// решение 3
+
+var test ="T.y.p.e.s.c.r.i.p.t";
+const RegExp_dot = /\./gi;
+var result = test.replace(RegExp_dot,"");
+console.log(result)
