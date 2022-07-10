@@ -46,4 +46,77 @@ numbers.slice()
 
 // плюс все методы строк
 
+Поиск элемента в объекте
+
+Просто прямое сравнение не работает, потому что тип ссылочный.
+Воспольщемся методом и критерий зададим как функцию
+
+const students = [
+    {name: "Vasya", age:17},
+    {name: "Igor", age:25},
+    {name: "Max", age:28},
+]
+
+students.find(student => student.name=="Vasya" && student.age==18)
+// вернет сам объект студента, либо underfined
+students.findIndex(student => student.name==="Vasya" && student.age===18)
+// вернет индекс 0, либо -1
+
+Для массивов простых чисел students.includes()
+
+Проверить, все ли элементы соответствуют условию:
+students.every(students => student.age > 20) // false
+
+Проверить, ХОТЯ БЫ ОДИН элемент соответствуют условию:
+students.some(students => student.age > 20) // false
  
+
+---------------------
+Фильтрация массива
+
+const kids = students.filter(students => student.age < 20)
+вернет [{name: "Vasya", age:17}]
+
+
+---------------------
+Преобразование элементов массива. Получает объект из списка и возвращает только один его атрибут
+
+const students = [
+    {name: "Vasya", age:17},
+    {name: "Igor", age:25},
+    {name: "Max", age:28},
+]
+
+students.map(student => student.name); // вернет Vasya, Igor, Max
+
+
+----------------------
+Расчеты с элемантами
+
+const cartItems = [
+    {name: "Греча", price:50, quality: 3},
+    {name: "Рис", price:45, quality: 1},
+    {name: "Пшено", price:100, quality: 2},
+]
+
+cartItems.reduce(
+    //1-й аргумент функция, в нее подается уже накопленное значение
+    (total, item) => total + item.price*item.quality, 
+    //2-й аргумент начальное знаение
+    0
+);
+
+
+---------------------
+Перебор массива, укороченный вариант цикла
+
+// первый аргумент функции очередной элемент, второй - индексу
+students.forEach((student, index) => {
+    console.log(`Студент №${index+1}: ${student.name}`);
+});
+
+// то же самое циклом
+for (const index in students) {
+    const student = student[index];
+    console.log(`Студент №${index+1}: ${student.name}`);
+}
