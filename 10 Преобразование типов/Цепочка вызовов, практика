@@ -70,8 +70,10 @@ function getPageLinkDomains() {
             )
         // теперь создаем новый массив уникальнх имен
         .reduce((unigueDomains, domain) => {
-            // возвращаем массив без изменений, если в нем уже есть этот домен
+            // возвращаем входящий массив без изменений, если в нем уже есть этот домен
             if (unigueDomains.includes(domain)) return unigueDomains;
+            // в противном случае добавлем к нему проверяемый доме
             return [...unigueDomains, domain]
+            // стартуем с пустого массива
         }, []); 
 }
