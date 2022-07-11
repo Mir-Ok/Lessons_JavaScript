@@ -48,3 +48,30 @@ function parseEmployeeData(dataString) {
         };
     })
 }
+
+
+Задача 2. Поиск всех ссылок на странице в браузере и возврат списка доменов
+---------------------------------------------------------------------------
+
+function getPageLinkDomains() {
+    // Array.from создаст массив из массивоподобныйх структур, что вернет метод
+    // это добавитт методы массива
+    return Array.from(document.getElementsByTagName('a'))
+        // доступен, потому что стал массивом
+        .map(link => link.href
+            // убираем лишнее
+            .replace('http://', '')
+            .replace('https:', '')
+            .replace('www.','')
+            // делим по слешу, чтобы взять именно домен
+            .split('/')
+            // забираем первый элемент
+            .shift()
+            )
+        // теперь создаем новый массив уникальнх имен
+        .reduce((unigueDomains, domain) => {
+            // возвращаем массив без изменений, если в нем уже есть этот домен
+            if (unigueDomains.includes(domain)) return unigueDomains;
+            return [...unigueDomains, domain]
+        }, []); 
+}
